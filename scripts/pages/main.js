@@ -182,6 +182,7 @@ function bindTouchEvents() {
 
     var touchF = function(e) {
         e.preventDefault();
+        alert("ok");
         var touch = e.originalEvent.touches[0];
         highlightHoveredObject(touch.clientX, touch.clientY);
     };
