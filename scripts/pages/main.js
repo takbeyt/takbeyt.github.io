@@ -183,6 +183,7 @@ function bindTouchEvents() {
     var touchF = function(e) {
         e.preventDefault();
         var touch = e.originalEvent.touches[0];
+		alert(touch.clientX+" "+touch.clientY)
         highlightHoveredObject(touch.clientX, touch.clientY);
     };
     $('#playContainer').bind({
