@@ -200,12 +200,14 @@ function highlightHoveredObject(x, y) {
 
     $('.playCellInner').each(function() {
         // check if is inside boundaries
+		alert("aaa");
         if (!(
                 x <= $(this).offset().left || x >= $(this).offset().left + $(this).outerWidth() ||
                 y <= $(this).offset().top || y >= $(this).offset().top + $(this).outerHeight()
                 )) {
-
+			alert("bbb");
             if (!$(this).hasClass('highlighted') && $(this).hasClass('playCellInner') && (this).css("visibility") !== "hidden") {
+				alert("ccc");
                 $(this).addClass('highlighted');
                 var oldValue = $("#firstSentence").data("accumulator");
                 if (oldValue === undefined) {
