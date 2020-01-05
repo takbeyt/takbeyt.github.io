@@ -153,7 +153,7 @@ function bindMouseEvents() {
     $(".playCellInner")
             .mousedown(function() {
                 isMouseDown = true;
-                if (!$(this).hasClass("highlighted") && $(this).css("visibility") !== "hidden") {
+                if (!$(this).hasClass("highlighted") && !$(this).data().done) {
                     $(this).toggleClass("highlighted");
                     accumulator += (" " + $(this).html());
                     checkMatch(accumulator);
@@ -162,7 +162,7 @@ function bindMouseEvents() {
             })
             .mouseover(function() {
                 if (isMouseDown) {
-                    if (!$(this).hasClass("highlighted") && $(this).css("visibility") !== "hidden") {
+                    if (!$(this).hasClass("highlighted") && !$(this).data().done) {
                         $(this).toggleClass("highlighted");
                         accumulator += (" " + $(this).html());
                         checkMatch(accumulator);
@@ -204,8 +204,7 @@ function highlightHoveredObject(x, y) {
                 x <= $(this).offset().left || x >= $(this).offset().left + $(this).outerWidth() ||
                 y <= $(this).offset().top || y >= $(this).offset().top + $(this).outerHeight()
                 )) {
-            if (!$(this).hasClass('highlighted') && $(this).hasClass('playCellInner')) {
-				alert("ccc");
+            if (!$(this).hasClass('highlighted') && $(this).hasClass('playCellInner') && !$(this).data().done) {
                 $(this).addClass('highlighted');
                 var oldValue = $("#firstSentence").data("accumulator");
                 if (oldValue === undefined) {
@@ -226,11 +225,13 @@ function checkMatch(accumulator) {
 
     if (accumulator.trim() === mesra1) {
         $(".highlighted").css("visibility", "hidden");
+		$(".highlighted").data("done",true);
         $("#firstSentence").html(mesra1);
         $("#firstSentence").data("found", true);
     }
     if (accumulator.trim() === mesra2) {
         $(".highlighted").css("visibility", "hidden");
+		$(".highlighted").data("done",true);
         $("#secondSentence").html(mesra2);
         $("#secondSentence").data("found", true);
     }
