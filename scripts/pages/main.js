@@ -204,7 +204,7 @@ function highlightHoveredObject(x, y) {
                 x <= $(this).offset().left || x >= $(this).offset().left + $(this).outerWidth() ||
                 y <= $(this).offset().top || y >= $(this).offset().top + $(this).outerHeight()
                 )) {
-            if (!$(this).hasClass('highlighted') && $(this).hasClass('playCellInner') && (this).css("visibility") !== "hidden") {
+            if (!$(this).hasClass('highlighted') && $(this).hasClass('playCellInner')) {
 				alert("ccc");
                 $(this).addClass('highlighted');
                 var oldValue = $("#firstSentence").data("accumulator");
