@@ -6,8 +6,7 @@ function init() {
     $("#btnSkipLevel").click(function() {
         var coins = getCoins();
         if (coins >= 3) {
-            goToNextLevel();
-            loadLevel();
+			checkMatch("",true);
             coins -= 3;
             setCoins(coins);
         }
