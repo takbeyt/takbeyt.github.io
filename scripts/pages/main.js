@@ -240,9 +240,9 @@ function checkMatch(accumulator,force) {
 			$("#firstSentence").data("accumulator", "");
 			$("#secondSentence").data("accumulator", "");
 			$(".highlighted").removeClass("highlighted");
+			goToNextLevel();
+			loadLevel();
 		});
-        goToNextLevel();
-        loadLevel();
     }
 }
 
