@@ -236,7 +236,9 @@ function checkMatch(accumulator) {
         $("#secondSentence").data("found", true);
     }
     if ($("#secondSentence").data().found && $("#firstSentence").data().found) {
-        myApp.alert(mesra1 + " <br>  " + mesra2, "");
+        myApp.alert(mesra1 + " <br>  " + mesra2, "",function(){
+			$(".highlighted").removeClass("highlighted");
+		});
         goToNextLevel();
         loadLevel();
         $("#lblTyping").html("");
