@@ -218,18 +218,18 @@ function highlightHoveredObject(x, y) {
         }
     });
 }
-function checkMatch(accumulator) {
+function checkMatch(accumulator,force) {
     $("#lblTyping").html(accumulator);
     var mesra1 = $("#firstSentence").data().answer;
     var mesra2 = $("#secondSentence").data().answer;
 
-    if (accumulator.trim() === mesra1) {
+    if (accumulator.trim() === mesra1 || force) {
         $(".highlighted").css("visibility", "hidden");
 		$(".highlighted").data("done",true);
         $("#firstSentence").html(mesra1);
         $("#firstSentence").data("found", true);
     }
-    if (accumulator.trim() === mesra2) {
+    if (accumulator.trim() === mesra2 || force) {
         $(".highlighted").css("visibility", "hidden");
 		$(".highlighted").data("done",true);
         $("#secondSentence").html(mesra2);
@@ -237,14 +237,13 @@ function checkMatch(accumulator) {
     }
     if ($("#secondSentence").data().found && $("#firstSentence").data().found) {
         myApp.alert(mesra1 + " <br>  " + mesra2, "",function(){
+			$("#lblTyping").html("");
+			$("#firstSentence").data("accumulator", "");
+			$("#secondSentence").data("accumulator", "");
 			$(".highlighted").removeClass("highlighted");
 		});
         goToNextLevel();
         loadLevel();
-        $("#lblTyping").html("");
-		$("#firstSentence").data("accumulator", "");
-		$("#secondSentence").data("accumulator", "");
-		$(".highlighted").removeClass("highlighted");
     }
 }
 
