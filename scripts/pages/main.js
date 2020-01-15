@@ -240,6 +240,9 @@ function checkMatch(accumulator) {
         goToNextLevel();
         loadLevel();
         $("#lblTyping").html("");
+		$("#firstSentence").data("accumulator", "");
+		$("#secondSentence").data("accumulator", "");
+		$(".highlighted").removeClass("highlighted");
     }
 }
 
